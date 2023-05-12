@@ -1,0 +1,8 @@
+.boxChat{
+    background-color: var(--ui-background-very-lightgray);
+    height: 90%;
+    padding:1rem;
+    overflow-y: scroll;
+    background-image:linear-gradient(to bottom, var(--ui-background-very-lightgray) 0%, transparent 120%), url("../../../../public/img/background-box-chat.png");
+    background-repeat: repeat;
+}

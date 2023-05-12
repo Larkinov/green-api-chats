@@ -1,0 +1,21 @@
+:root{
+    --main-color:rgb(36,204,99);
+    --ui-text:rgb(0, 0, 0);
+    --ui-background-white:rgb(255,255,255);
+    --ui-background-very-lightgray:rgb(248,246,245);
+    --main-font-family:'Arvo', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: var(--main-font-family);
+}
+
+.app{
+    width: 100wh;
+    height: 100vh;
+    background-color: var(--ui-background-white);
+    display:flex;
+}

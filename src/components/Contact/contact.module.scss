@@ -1,0 +1,14 @@
+:root{
+    --contact-active:rgb(235,235,235);
+}
+
+.contact{
+    cursor: pointer;
+    background-color: var(--ui-background-white);
+    padding:1rem 0rem;
+    transition: all 0.15s ease-in;
+
+    &:active{
+        background-color: var(--contact-active);
+    }
+}

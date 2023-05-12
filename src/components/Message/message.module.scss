@@ -1,0 +1,26 @@
+:root{
+    --outmessage-others:rgb(182,220,157);
+    --inmessage-text:rgb(0, 0, 0);
+    --inmessage-background:rgb(253,253,253);
+    --outmessage-text:rgb(0, 0, 0);
+    --outmessage-background:rgb(201, 255, 154);
+}
+
+.message{
+    padding:1rem;
+    width: 60%;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+.inMessage{
+    margin-right: auto;
+    background-color: var(--inmessage-background);
+    color: var(--inmessage-text);
+}
+
+.outMessage{
+    margin-left: auto;
+    background-color: var(--outmessage-background);
+    color: var(--outmessage-text);
+}
