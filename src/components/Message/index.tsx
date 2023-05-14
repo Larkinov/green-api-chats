@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const Message:React.FC = () => {
   return (
-    <p className={classNames(styles.message, styles.inMessage)}>1jd;sadsakdlksa dksa;ldks a;ldk;sadk;sakdlsakd;  sakd;laskd;lsakd;sakd; аадлвадвыоаыlskd;sadk; saldka;sldksa</p>
+    <p className={classNames(styles.message, styles.outMessage)}>1jd;sadsakdlksa dksa;ldks a;ldk;sadk;sakdlsakd;  sakd;laskd;lsakd;sakd; аадлвадвыоаыlskd;sadk; saldka;sldksa</p>
     )
 }
 
