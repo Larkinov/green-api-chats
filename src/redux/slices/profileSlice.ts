@@ -1,24 +1,28 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-export interface FilterSliceState {
-  searchValue: string,
+export interface IprofileSlice {
+  idInstance: string,
+  apiTokenInstance: string,
 }
 
-const initialState : FilterSliceState = {
-  searchValue: "",
+const initialState : IprofileSlice = {
+  idInstance: "",
+  apiTokenInstance: "",
 };
 
-const filterSlice = createSlice({
-  name: "filters",
+const profileSlice = createSlice({
+  name: "profile",
   initialState,
   reducers: {
-    setCategoryId(state, action: PayloadAction<number>) {
+    setIdProfile(state, action) {      
+      state.idInstance = action.payload.idInstanceUI;
+      state.apiTokenInstance = action.payload.apiTokenInstanceUI;
     },
   },
 });
 
 export const {
-  setCategoryId,
-} = filterSlice.actions;
+  setIdProfile,
+} = profileSlice.actions;
 
-export default filterSlice.reducer;
+export default profileSlice.reducer;
