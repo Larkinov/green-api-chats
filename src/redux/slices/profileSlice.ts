@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface IprofileSlice {
+interface IprofileSlice {
   idInstance: string,
   apiTokenInstance: string,
 }

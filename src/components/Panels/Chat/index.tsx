@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./panelChat.module.scss";
 import Header from '../../Header/Chat';
 import BoxChat from '../../Box/Chat';
-import Input from '../../Input/InputChat';
+import Input from './Input/InputChat';
 
 const PanelChat:React.FC = () => {
   return (

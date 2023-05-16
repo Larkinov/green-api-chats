@@ -1,12 +1,14 @@
 import axios from "axios";
 
-export const sendMessage = (idChat: string, message: string) => {
-  const idInstance = "1101820189";
-  const apiTokenInstance = "9b0bee469f9a4905b7a18b64914ca7251ea94c35c7a349e9a0";
-
+export const sendTextMessage = (
+  idInstance: string,
+  apiToken: string,
+  idChat: string,
+  textMessage: string
+) => {
   const payload = {
-    chatId: "79001234567@c.us",
-    message: "I use Green-API to send this message to you!",
+    chatId: idChat+"@c.us",
+    message: textMessage,
   };
 
   const config = {
@@ -16,7 +18,7 @@ export const sendMessage = (idChat: string, message: string) => {
   };
   axios
     .post(
-      `https://api.green-api.com/waInstance${idInstance}/sendMessage/${apiTokenInstance}`,
+      `https://api.green-api.com/waInstance${idInstance}/sendMessage/${apiToken}`,
       payload,
       config
     )
@@ -26,4 +28,7 @@ export const sendMessage = (idChat: string, message: string) => {
     .catch((err) => {
       console.log("error_sendMessage", err);
     });
+
+    console.log(payload);
+    
 };

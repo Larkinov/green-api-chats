@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import profileSlice from './slices/profileSlice';
 import uiControllerSlice from './slices/uiControllerSlice';
 import messageSlice from './slices/messageSlice';
+import contactSlice from './slices/contactSlice';
 
 export const store = configureStore({
   reducer: {
     profile:profileSlice,
     uiController:uiControllerSlice,
-    message: messageSlice,
+    messages: messageSlice,
+    contacts:contactSlice,
   },
 });
 

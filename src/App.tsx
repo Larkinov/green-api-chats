@@ -10,16 +10,25 @@ import FormAddContact from "./components/Forms/FormAddContact";
 import { RootState } from "./redux/store";
 
 const App: React.FC = () => {
-  const { formRegistration, formAddContact } = useSelector(
+  const { formRegistration, formAddContact, panelChat } = useSelector(
     (state: RootState) => state.uiController
   );
 
   return (
     <div className="app">
-      {formRegistration === true ? <Registration />: ""}
-      {formAddContact && <FormAddContact/>}
-      <PanelContact />
-      <PanelChat />
+      {formRegistration === true ? (
+        <Registration />
+      ) : (
+        <div className="panelBlock">
+          {formAddContact && <FormAddContact />}
+          <PanelContact />
+          {panelChat === true ? (
+            <PanelChat />
+          ) : (
+            <div>Тип фон или картиночка какая-нибудь</div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
