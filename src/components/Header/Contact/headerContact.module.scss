@@ -3,4 +3,17 @@
     padding:1rem;
     height: 5%;
     cursor: default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--ui-background-very-lightgray);
+}
+
+.btnAddContact{
+    border: none;
+    background-color: var(--ui-background-white);
+
+    &:active{
+        background-color: var(--main-color);
+    }
 }

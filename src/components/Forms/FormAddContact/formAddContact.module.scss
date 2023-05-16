@@ -1,0 +1,59 @@
+.windowAddContact{
+    position:fixed;
+    width: 40%;
+    height: 30%;
+    top:35%;
+    right: 30%;
+    background-color: var(--outmessage-background);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h3{
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .inputBlock{
+        position: relative;
+        width: 100%;
+
+        input{
+            border: none;
+            padding:0.5rem;
+            width: 100%;
+        }
+
+        .inputIcon{
+            position: absolute;
+            width: 20px;
+            top:7px;
+            right: 12px;
+            cursor: pointer;
+            transition: all 0.15s ease-in;
+
+            &:active{
+                opacity: 0.7;
+            }
+        }
+    }
+
+    p{
+        margin-bottom: 0.5rem;
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .failedSendContact {
+        top:40px;
+        color:red;
+        position: absolute;
+    }
+}
+
+
+

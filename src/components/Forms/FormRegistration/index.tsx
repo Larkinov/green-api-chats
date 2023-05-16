@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./registration.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { setIdProfile } from "../../redux/slices/profileSlice";
-import { setFormRegistration } from "../../redux/slices/uiControllerSlice";
+import { RootState } from "../../../redux/store";
+import { setIdProfile } from "../../../redux/slices/profileSlice";
+import { setFormRegistration } from "../../../redux/slices/uiControllerSlice";
 import axios from "axios";
 
 const Registration: React.FC = () => {
@@ -29,7 +29,7 @@ const Registration: React.FC = () => {
           console.log("success!");
         })
         .catch((error) => {
-          failedProfile.current = true;
+          failedProfile.current = true;          
           console.log("error_getInstance", error);
         });
     }
@@ -39,8 +39,8 @@ const Registration: React.FC = () => {
   React.useEffect(() => {
     if (!isFirstOpening.current) {
       dispatch(setFormRegistration(false));
-    }
-  }, [idInstance]);
+    }    
+  }, [idInstance,]);
 
   React.useEffect(() => {
     isFirstOpening.current = false;
@@ -48,7 +48,7 @@ const Registration: React.FC = () => {
 
   return (
     <div className={styles.windowRegistation}>
-      <h1>Зарегистрироваться</h1>
+      <h1>Войти</h1>
       <input
         type="text"
         placeholder="idInstance"

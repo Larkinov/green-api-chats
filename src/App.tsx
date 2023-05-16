@@ -1,21 +1,23 @@
 import React from "react";
 
-import "./scss/App.scss";
+import "./App.scss";
 import { useSelector } from "react-redux";
 
 import PanelContact from "./components/Panels/Contact";
 import PanelChat from "./components/Panels/Chat";
-import Registration from "./components/FormRegistration";
+import Registration from "./components/Forms/FormRegistration";
+import FormAddContact from "./components/Forms/FormAddContact";
 import { RootState } from "./redux/store";
 
 const App: React.FC = () => {
-  const { formRegistration } = useSelector(
+  const { formRegistration, formAddContact } = useSelector(
     (state: RootState) => state.uiController
   );
-    
+
   return (
     <div className="app">
-      {formRegistration && <Registration />}
+      {formRegistration === true ? <Registration />: ""}
+      {formAddContact && <FormAddContact/>}
       <PanelContact />
       <PanelChat />
     </div>
