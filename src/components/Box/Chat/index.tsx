@@ -17,6 +17,9 @@ const BoxChat: React.FC = () => {
     
   },[lengthActiveMessages,idActiveContact]);
 
+  console.log(messageItems,"messagesss");
+  console.log(idActiveContact, "idActiveContact");
+  
   
 
   return (

@@ -25,6 +25,11 @@ const nullMessageItems:TMessagesContact[] = [{
     messages:nullMessage,
 }]
 
+export const nullMessageItem:TMessagesContact = {
+  idContact:0,
+  messages:nullMessage,
+}
+
 const initialState: IMessageSlice = {
   idActiveContact: 0,
   activePhoneNumber: "",
@@ -39,6 +44,10 @@ const messageSlice = createSlice({
     setActiveContact(state, action) {
       state.idActiveContact = action.payload.idActiveContact;
       state.activePhoneNumber = action.payload.activePhoneNumber;
+      
+    },
+    addFirstMessage(state,action){
+        state.messageItems.push(action.payload);
     },
     setMessage(state, action) {
       state.messageItems[state.idActiveContact-1].messages.push(action.payload);
@@ -47,6 +56,6 @@ const messageSlice = createSlice({
   },
 });
 
-export const { setActiveContact, setMessage } = messageSlice.actions;
+export const { setActiveContact, setMessage, addFirstMessage } = messageSlice.actions;
 
 export default messageSlice.reducer;

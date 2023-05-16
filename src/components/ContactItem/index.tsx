@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./contact.module.scss";
-import { setActiveContact } from "../../redux/slices/messageSlice";
-import { useDispatch } from "react-redux";
+import { addFirstMessage, nullMessageItem, setActiveContact, } from "../../redux/slices/messageSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { setPanelChat } from "../../redux/slices/uiControllerSlice";
+import { RootState } from "../../redux/store";
 
 type ContactProps = {
   idContact: number;
@@ -11,15 +12,19 @@ type ContactProps = {
 
 const Contact: React.FC<ContactProps> = ({ idContact, phoneNumber }) => {
   const dispatch = useDispatch();
+  const {messageItems} = useSelector((state:RootState) => state.messages);
 
-  const onClickContact = (id: number) => {
+  const onClickContact = () => {
+    if(messageItems[idContact-1]===undefined){
+      dispatch(addFirstMessage(nullMessageItem));
+    }
     dispatch(setActiveContact({idActiveContact:idContact, activePhoneNumber:phoneNumber}));
     dispatch(setPanelChat(true));
-    console.log("ClickContact",id);
+    console.log("ClickContact",idContact);
   };
 
   return (
-    <div className={styles.contact} onClick={() => onClickContact(idContact)}>
+    <div className={styles.contact} onClick={() => onClickContact()}>
       {phoneNumber}
     </div>
   );
