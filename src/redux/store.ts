@@ -3,6 +3,7 @@ import profileSlice from './slices/profileSlice';
 import uiControllerSlice from './slices/uiControllerSlice';
 import messageSlice from './slices/messageSlice';
 import contactSlice from './slices/contactSlice';
+import { useDispatch } from 'react-redux';
 
 export const store = configureStore({
   reducer: {
@@ -14,3 +15,6 @@ export const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
+
+type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>();

@@ -22,47 +22,47 @@ const BoxChat: React.FC = () => {
     (state: RootState) => state.messages
   );
 
-  const getChatHistory = async (
-    idInstance: string,
-    apiToken: string,
-    idChat: string
-  ) => {
-    const payload = {
-      chatId: idChat + "@c.us",
-    };
+  // const getChatHistory = async (
+  //   idInstance: string,
+  //   apiToken: string,
+  //   idChat: string
+  // ) => {
+  //   const payload = {
+  //     chatId: idChat + "@c.us",
+  //   };
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    await axios
-      .post(
-        `https://api.green-api.com/waInstance${idInstance}/GetChatHistory/${apiToken}`,
-        payload,
-        config
-      )
-      .then((res) => {
-        for (let i = res.data.length - 1; i >= 0; i--) {
-          if (res.data[i].textMessage !== undefined) {
-            // let m: TMessage = {streamMessage: StreamMessageEnum.OUTPUT ,text: res.data[i].textMessage };
-            // if(res.data[i].type==="incoming"){
-            //   m.streamMessage = StreamMessageEnum.INPUT;
-            // }
-            // dispatch(setMessage(m));
-          }
-        }
-        return res.data;
-      })
-      .catch((err) => {
-        console.log("error_GetChatHistory", err);
-        return null;
-      });
-  };
+  //   const config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
+  //   await axios
+  //     .post(
+  //       `https://api.green-api.com/waInstance${idInstance}/GetChatHistory/${apiToken}`,
+  //       payload,
+  //       config
+  //     )
+  //     .then((res) => {
+  //       for (let i = res.data.length - 1; i >= 0; i--) {
+  //         if (res.data[i].textMessage !== undefined) {
+  //           // let m: TMessage = {streamMessage: StreamMessageEnum.OUTPUT ,text: res.data[i].textMessage };
+  //           // if(res.data[i].type==="incoming"){
+  //           //   m.streamMessage = StreamMessageEnum.INPUT;
+  //           // }
+  //           // dispatch(setMessage(m));
+  //         }
+  //       }
+  //       return res.data;
+  //     })
+  //     .catch((err) => {
+  //       console.log("error_GetChatHistory", err);
+  //       return null;
+  //     });
+  // };
 
   React.useEffect(() => {
     if(isFirst.current||messageItems[idActiveContact-1].messages.length===1){
-      getChatHistory(idInstance, apiTokenInstance, activePhoneNumber);
+      // getChatHistory(idInstance, apiTokenInstance, activePhoneNumber);
     }
     isFirst.current = false;
   }, [lengthActiveMessages, idActiveContact]);

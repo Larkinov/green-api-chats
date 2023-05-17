@@ -18,18 +18,18 @@ const Registration: React.FC = () => {
   const isFirstOpening = React.useRef(true);
   const failedProfile = React.useRef(false);
 
-   const notificationCheck = () => {
-    const loopFunc = () => {      
-      // getNotification(idInstanceUI, apiTokenInstanceUI);
-      // deleteNotification(idInstance, apiTokenInstance, "0");
-      // console.log("loop111111111111111111111111111111");
+  //  const notificationCheck = () => {
+  //   const loopFunc = () => {      
+  //     // getNotification(idInstanceUI, apiTokenInstanceUI);
+  //     // deleteNotification(idInstance, apiTokenInstance, "0");
+  //     // console.log("loop111111111111111111111111111111");
       
-    };
-    setTimeout(function run() {
-      loopFunc();
-      setTimeout(run, 5000);
-    }, 5000);
-  };
+  //   };
+  //   setTimeout(function run() {
+  //     loopFunc();
+  //     setTimeout(run, 5000);
+  //   }, 5000);
+  // };
 
 
   const onClickSubmit = () => {
@@ -41,8 +41,7 @@ const Registration: React.FC = () => {
         .then(() => {
           failedProfile.current = false;
           dispatch(setIdProfile({ idInstanceUI, apiTokenInstanceUI }));
-          notificationCheck();
-          console.log("success!");
+          // notificationCheck();
         })
         .catch((error) => {
           failedProfile.current = true;          
