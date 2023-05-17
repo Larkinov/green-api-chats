@@ -7,9 +7,14 @@ export const sendTextMessage = (
   textMessage: string
 ) => {
   const payload = {
-    chatId: idChat+"@c.us",
+    chatId: idChat + "@c.us",
     message: textMessage,
   };
+
+  console.log(payload.chatId, "номер телефона");
+  console.log(idInstance, apiToken);
+  
+  
 
   const config = {
     headers: {
@@ -28,7 +33,69 @@ export const sendTextMessage = (
     .catch((err) => {
       console.log("error_sendMessage", err);
     });
+};
 
-    console.log(payload);
-    
+export const getNotification = (idInstance: string, apiToken: string) => {
+  axios
+    .get(
+      `https://api.green-api.com/waInstance${idInstance}/ReceiveNotification/${apiToken}`
+    )
+    .then((res) => {
+      // console.log(res.data.body.messageData.textMessageData.textMessage);
+      console.log(res.data.receiptId, "id чтобы удалить");
+
+      console.log(res.data.body);
+
+      //номер
+      // console.log(res.data.body.senderData.chatId);
+    })
+    .catch((err) => {
+      console.log("error_getNotification", err);
+    });
+};
+
+export const deleteNotification = (
+  idInstance: string,
+  apiToken: string,
+  idNotification: string
+) => {
+  axios
+    .delete(
+      `https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiToken}/${idNotification}`
+    )
+    .then((res) => {
+      console.log(res.data, "datas");
+    })
+    .catch((err) => {
+      console.log("error_deleteNotification", err);
+    });
+};
+
+export const getChatHistory = (
+  idInstance: string,
+  apiToken: string,
+  idChat: string,
+) => {
+  const payload = {
+    chatId: idChat + "@c.us",
+  };
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  axios
+    .post(
+      `https://api.green-api.com/waInstance${idInstance}/GetChatHistory/${apiToken}`,
+      payload,
+      config
+    )
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log("error_GetChatHistory", err);
+      return null;
+    });
 };

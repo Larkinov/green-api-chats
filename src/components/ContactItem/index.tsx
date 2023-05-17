@@ -20,7 +20,6 @@ const Contact: React.FC<ContactProps> = ({ idContact, phoneNumber }) => {
     }
     dispatch(setActiveContact({idActiveContact:idContact, activePhoneNumber:phoneNumber}));
     dispatch(setPanelChat(true));
-    console.log("ClickContact",idContact);
   };
 
   return (

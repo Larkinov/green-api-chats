@@ -3,8 +3,8 @@ import styles from "./inputs.module.scss";
 import { RootState } from "../../../../redux/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { TMessage, setMessage } from "../../../../redux/slices/messageSlice";
-import { sendTextMessage } from "../../../../requestFunction";
+import { StreamMessageEnum, TMessage, setMessage } from "../../../../redux/slices/messageSlice";
+import { deleteNotification, getChatHistory, getNotification, sendTextMessage } from "../../../../requestFunction";
 
 const InputChat: React.FC = () => {
   const dispatch = useDispatch();
@@ -13,11 +13,18 @@ const InputChat: React.FC = () => {
   const {idInstance, apiTokenInstance} = useSelector((state:RootState)=> state.profile);
 
   const onClickButtonSend = () => {
-      let m:TMessage = {text:inputButtonSend};
+      let m:TMessage = { streamMessage: StreamMessageEnum.OUTPUT,text:inputButtonSend};
       dispatch(setMessage(m));
+      
       sendTextMessage(idInstance,apiTokenInstance,activePhoneNumber,m.text);
       setInputButtonSend("");
-  };
+
+      // getNotification(idInstance,apiTokenInstance);
+      // for (let index = 8; index < 20; index++) {
+      //   deleteNotification(idInstance,apiTokenInstance,String(index));
+      //   console.log(index,"index");
+      // }
+  };  
 
   return (
     <div className={styles.inputBlock}>

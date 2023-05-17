@@ -1,6 +1,12 @@
 import {PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+export enum StreamMessageEnum {
+  INPUT = "input",
+  OUTPUT = "output",
+}
+
 export type TMessage = {
+    streamMessage: StreamMessageEnum,
     text: string;
 };
 
@@ -10,6 +16,7 @@ export type TMessagesContact = {
 }
 
 const nullMessage:TMessage[] = [{
+    streamMessage: StreamMessageEnum.OUTPUT,
     text:"У вас нет сообщений с *contactName*. Напишите сообщение чтобы начать беседу.",
 }]
 
