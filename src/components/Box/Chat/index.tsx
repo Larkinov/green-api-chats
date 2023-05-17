@@ -45,11 +45,11 @@ const BoxChat: React.FC = () => {
       .then((res) => {
         for (let i = res.data.length - 1; i >= 0; i--) {
           if (res.data[i].textMessage !== undefined) {
-            let m: TMessage = {streamMessage: StreamMessageEnum.OUTPUT ,text: res.data[i].textMessage };
-            if(res.data[i].type==="incoming"){
-              m.streamMessage = StreamMessageEnum.INPUT;
-            }
-            dispatch(setMessage(m));
+            // let m: TMessage = {streamMessage: StreamMessageEnum.OUTPUT ,text: res.data[i].textMessage };
+            // if(res.data[i].type==="incoming"){
+            //   m.streamMessage = StreamMessageEnum.INPUT;
+            // }
+            // dispatch(setMessage(m));
           }
         }
         return res.data;

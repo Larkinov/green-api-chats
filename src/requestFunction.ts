@@ -11,11 +11,6 @@ export const sendTextMessage = (
     message: textMessage,
   };
 
-  console.log(payload.chatId, "номер телефона");
-  console.log(idInstance, apiToken);
-  
-  
-
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -27,9 +22,6 @@ export const sendTextMessage = (
       payload,
       config
     )
-    .then((res) => {
-      console.log(res.data);
-    })
     .catch((err) => {
       console.log("error_sendMessage", err);
     });
@@ -41,7 +33,6 @@ export const getNotification = (idInstance: string, apiToken: string) => {
       `https://api.green-api.com/waInstance${idInstance}/ReceiveNotification/${apiToken}`
     )
     .then((res) => {
-      // console.log(res.data.body.messageData.textMessageData.textMessage);
       console.log(res.data.receiptId, "id чтобы удалить");
 
       console.log(res.data.body);
@@ -50,7 +41,7 @@ export const getNotification = (idInstance: string, apiToken: string) => {
       // console.log(res.data.body.senderData.chatId);
     })
     .catch((err) => {
-      console.log("error_getNotification", err);
+      // console.log("error_getNotification", err);
     });
 };
 

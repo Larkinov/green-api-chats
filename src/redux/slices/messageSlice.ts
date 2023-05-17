@@ -6,8 +6,9 @@ export enum StreamMessageEnum {
 }
 
 export type TMessage = {
-    streamMessage: StreamMessageEnum,
+    streamMessage: StreamMessageEnum;
     text: string;
+    idMessage: string;
 };
 
 export type TMessagesContact = {
@@ -18,7 +19,8 @@ export type TMessagesContact = {
 const nullMessage:TMessage[] = [{
     streamMessage: StreamMessageEnum.OUTPUT,
     text:"У вас нет сообщений с *contactName*. Напишите сообщение чтобы начать беседу.",
-}]
+    idMessage:"00000000",
+  }]
 
 interface IMessageSlice {
   idActiveContact: number;
@@ -51,7 +53,6 @@ const messageSlice = createSlice({
     setActiveContact(state, action) {
       state.idActiveContact = action.payload.idActiveContact;
       state.activePhoneNumber = action.payload.activePhoneNumber;
-      
     },
     addFirstMessage(state,action){
         state.messageItems.push(action.payload);
@@ -60,9 +61,12 @@ const messageSlice = createSlice({
       state.messageItems[state.idActiveContact-1].messages.push(action.payload);
       state.lengthActiveMessages++;
     },
+    setLastMessageId(state, action) {
+      state.messageItems[state.idActiveContact-1].messages[state.messageItems[state.idActiveContact-1].messages.length-1].idMessage = action.payload;
+    },
   },
 });
 
-export const { setActiveContact, setMessage, addFirstMessage } = messageSlice.actions;
+export const { setActiveContact, setMessage, addFirstMessage, setLastMessageId } = messageSlice.actions;
 
 export default messageSlice.reducer;

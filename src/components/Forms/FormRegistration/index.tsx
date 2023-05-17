@@ -5,6 +5,7 @@ import { RootState } from "../../../redux/store";
 import { setIdProfile } from "../../../redux/slices/profileSlice";
 import { setFormRegistration } from "../../../redux/slices/uiControllerSlice";
 import axios from "axios";
+import { getNotification } from "../../../requestFunction";
 
 const Registration: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,20 @@ const Registration: React.FC = () => {
   const isFirstOpening = React.useRef(true);
   const failedProfile = React.useRef(false);
 
+   const notificationCheck = () => {
+    const loopFunc = () => {      
+      // getNotification(idInstanceUI, apiTokenInstanceUI);
+      // deleteNotification(idInstance, apiTokenInstance, "0");
+      // console.log("loop111111111111111111111111111111");
+      
+    };
+    setTimeout(function run() {
+      loopFunc();
+      setTimeout(run, 5000);
+    }, 5000);
+  };
+
+
   const onClickSubmit = () => {
     async function getResult() {
       await axios
@@ -26,6 +41,7 @@ const Registration: React.FC = () => {
         .then(() => {
           failedProfile.current = false;
           dispatch(setIdProfile({ idInstanceUI, apiTokenInstanceUI }));
+          notificationCheck();
           console.log("success!");
         })
         .catch((error) => {
