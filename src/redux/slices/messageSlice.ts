@@ -103,6 +103,7 @@ export const getChatHistoryRedux = createAsyncThunk(
   async (messagesOptions: getChatHistoryArgs) => {
     console.log("Отправка запроса получения чата");
     
+    
 
     const payload = {
       chatId: messagesOptions.idChat + "@c.us",
@@ -186,6 +187,8 @@ const messageSlice = createSlice({
       let messagesThisContact =
         state.messageItems[state.idActiveContact - 1].messages;
       let messagesApi = action.payload;
+      console.log(messagesApi,"Сообщения из api!");
+      
       for (let i = messagesApi.length - 1; i >= 0; i--) {
         if (messagesApi[i].textMessage !== undefined) {
           let elemMessage: TMessage = {

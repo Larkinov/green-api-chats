@@ -30,17 +30,23 @@ const BoxChat: React.FC = () => {
     idChat: activePhoneNumber,
   };
 
+  const ticktimer = React.useCallback(() => {
+    setInterval(()=>{
+      console.log(args,"приходящие опции!");
+      
+      dispatchApp(getChatHistoryRedux(args));
+    },5000)
+  }, []);
 
   React.useEffect(() => {
     if (
       isFirst.current ||
       messageItems[idActiveContact - 1].messages.length === 1
     ) {
-      dispatchApp(getChatHistoryRedux(args));
+      ticktimer();
     }
     isFirst.current = false;
   }, [lengthActiveMessages, idActiveContact]);
-
 
   return (
     <div className={styles.boxChat}>
