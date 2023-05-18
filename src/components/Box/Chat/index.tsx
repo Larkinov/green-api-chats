@@ -10,6 +10,8 @@ import {
   getChatHistoryRedux,
 } from "../../../redux/slices/messageSlice";
 
+
+
 const BoxChat: React.FC = () => {
   const dispatchApp = useAppDispatch();
   const { messageItems, idActiveContact, lengthActiveMessages } = useSelector(

@@ -9,7 +9,7 @@ const INPUT_CONTACT_REGEXP = /^[0-9]{11}$/;
 
 function FormAddContact() {
   const dispatch = useDispatch();
-  const {contactItems} = useSelector((state:RootState)=> (state.contacts))
+  const { contactItems } = useSelector((state: RootState) => state.contacts);
   const [inputButtonSend, setInputButtonSend] = React.useState("");
   const failedSendContact = React.useRef(false);
 
@@ -17,10 +17,12 @@ function FormAddContact() {
     if (inputButtonSend.replaceAll(" ", "").match(INPUT_CONTACT_REGEXP)) {
       failedSendContact.current = false;
       dispatch(setFormAddContact(false));
-    //   id косячный
+      //   id косячный - заменить на номер телефона?
       dispatch(
         setContact({
-            id:contactItems.length, phoneNumber: inputButtonSend.replaceAll(" ", "") } as TContact)
+          id: contactItems.length,
+          phoneNumber: inputButtonSend.replaceAll(" ", ""),
+        } as TContact)
       );
     } else {
       failedSendContact.current = true;
@@ -30,6 +32,10 @@ function FormAddContact() {
 
   return (
     <div className={styles.windowAddContact}>
+      <button
+        className={styles.btnCloseForm}
+        onClick={() => dispatch(setFormAddContact(false))}
+      ><img src="./svg/close.svg" alt="" /></button>
       <h3>Добавить новый контакт</h3>
       <p>Номер телефона в формате "7 ххх ххх хх хх"</p>
       <div className={styles.inputBlock}>

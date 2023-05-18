@@ -25,7 +25,7 @@ const App: React.FC = () => {
           {panelChat === true ? (
             <PanelChat />
           ) : (
-            <div>Тип фон или картиночка какая-нибудь</div>
+            <div></div>
           )}
         </div>
       )}

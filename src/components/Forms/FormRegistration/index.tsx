@@ -5,11 +5,10 @@ import { RootState } from "../../../redux/store";
 import { setIdProfile } from "../../../redux/slices/profileSlice";
 import { setFormRegistration } from "../../../redux/slices/uiControllerSlice";
 import axios from "axios";
-import { getNotification } from "../../../requestFunction";
 
 const Registration: React.FC = () => {
   const dispatch = useDispatch();
-  const { idInstance, apiTokenInstance } = useSelector(
+  const { idInstance} = useSelector(
     (state: RootState) => state.profile
   );
   const [idInstanceUI, setIdInstance] = React.useState("");
